@@ -40,7 +40,7 @@ func NewManagerFromFile(filename string, api string, level slog.Level) (*Manager
 }
 
 func (manager *Manager) Start(pollRate time.Duration) {
-	slog.Info("Starting poll", "pollRate", pollRate)
+	slog.Info("Starting poll", "pollRate", pollRate, "api", manager.tg.URL)
 	ticker := time.NewTicker(pollRate)
 	for ; true; _ = <-ticker.C {
 		for _, profile := range manager.Config.Profiles {
