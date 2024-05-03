@@ -65,7 +65,7 @@ func (manager *Manager) HandlePost(p *tt.Post, threadId int) error {
 		return nil
 	}
 	for _, file := range files {
-		if _, err := manager.tg.Send(manager.chat, tg.Document{File: tg.FromDisk(file), FileName: filepath.Base(file)}, &tg.SendOptions{ThreadID: threadId}); err != nil {
+		if _, err := manager.tg.Send(manager.chat, &tg.Document{File: tg.FromDisk(file), FileName: filepath.Base(file)}, &tg.SendOptions{ThreadID: threadId}); err != nil {
 			return fmt.Errorf("failed to send document: %w", err)
 		}
 	}
