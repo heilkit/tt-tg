@@ -39,7 +39,7 @@ func (manager *Manager) HandlePost(p *tt.Post, threadId int) error {
 		}
 		vid := tg.Video{
 			File:     tg.FromDisk(files[0]),
-			FileName: fmt.Sprintf("%s_%s_%s", p.Author.UniqueId, time.Unix(p.CreateTime, 0).Format(time.DateOnly), post.Id),
+			FileName: fmt.Sprintf("%s_%s_%s.mp4", p.Author.UniqueId, time.Unix(p.CreateTime, 0).Format(time.DateOnly), post.Id),
 		}.
 			With(tgvideo.ThumbnailAt("0.05")).
 			With(tgvideo.EmbedMetadata(post))
